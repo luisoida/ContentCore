@@ -1,0 +1,11 @@
+{
+    "site_name": "My ContentCore Page",
+    "site_id": "cc_",
+    "directory": {
+        "nav_bar": [{
+            "title": "Home",
+            "target": "home",
+            "target_location": "internal"
+        }]
+    }
+}
