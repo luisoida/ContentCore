@@ -1,5 +1,5 @@
 {
-    "cc_site": {
-        "cc_pages": "pages.json"
-    }
+    "title": "ContentCore Preview",
+    "url": "https://127.0.0.1",
+    "pages": "pages.json"
 }

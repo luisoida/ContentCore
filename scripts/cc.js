@@ -3,7 +3,9 @@
  * copyright (c) 2021 luis oida
  */
 
-const CC_VERSION = '0.0';
+const CC_VERSION = '0.0dev00001';
+const CC_BRANDED_VERSION = 'Apricot';
+
 var siteDataLoaded = false;
 var siteData;
 
@@ -45,10 +47,10 @@ var read = function(url, callback) {
 var loadpages = function(callback) {
     if (siteDataLoaded) {
         console.debug('Attempting to receive pages...');
-        console.debug(`pages == ${siteData.cc_site.cc_pages}`)
+        console.debug(`pages == ${siteData.pages}`)
 
         new Promise(function (resolve, reject) {
-            read(siteData.cc_site.cc_pages, function(status, data) {
+            read(siteData.pages, function(status, data) {
                 if (status !== null) {
                     console.error(`Could not load page data with error code: ${status}`);
     
@@ -89,7 +91,8 @@ var loadpages = function(callback) {
                 // update current page
                 let contents = document.getElementById('cc-site-content');
                 if (contents !== null) {
-                    contents.setAttribute('ready', '');
+                    console.log('Setting update attribute...');
+                    contents.setAttribute('update', '');
                 } else {
                     console.error('No contents element detected.');
                 }
@@ -131,6 +134,7 @@ var loadsite = function(callback) {
  * @param {The page ID that the cc-content element will contain.} page 
  */
 var loadPage = function(page) {
+    // get page
     console.log(`Loading data for page [${page}]...`);
     var data;
     Object.entries(pageData.pages).forEach(([key, value]) => {
@@ -145,6 +149,22 @@ var loadPage = function(page) {
         console.debug(data.data);
         currentPageLoaded = true;
         currentPage = data.data;
+        
+        if (currentPage.hasOwnProperty('title') && siteData.hasOwnProperty('title')) {
+            document.title = `${currentPage.title} | ${siteData.title}`;
+        } else if (currentPage.hasOwnProperty('title')) {
+            document.title = `${currentPage.title} | ContentCore Host`
+        } else if (siteData.hasOwnProperty('title')) {
+            document.title = siteData.title;
+        }
+
+        let navBar = document.getElementById('cc-site-nav');
+        navBar.setAttribute('update', '');
+
+        let contents = document.getElementById('cc-site-content');
+        contents.setAttribute('update', '');
+
+        window.history.pushState(null, null, `?page=${page}`)
     } else {
         loadPage('error_404');
     }

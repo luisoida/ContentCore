@@ -23,6 +23,7 @@
     "pages": [{
         "id": "home",
         "data": {
+            "title": "Home",
             "contents": [{
                 "id": "section",
                 "contentType": "elements",
@@ -38,13 +39,14 @@
                         "value": "p { font-weight:bold; }"
                     }],
                     "contentType": "text",
-                    "content": "Welcome to your ContentCore web page."
+                    "content": "Welcome to ContentCore! This is an example web site with a full configuration and sample stylesheet to show you how a ContentCore site may appear. At the moment, this version of ContentCore is %{CC_BRANDED_VERSION} %{CC_VERSION}. Thank you for trying out the ContentCore Development Build!"
                 }]
             }]
         }
     }, {
         "id": "error_404",
         "data": {
+            "title": "Page does not exist",
             "contents": [{
                 "id": "section",
                 "contentType": "elements",
@@ -64,6 +66,7 @@
     }, {
         "id": "paragraph_test",
         "data": {
+            "title": "Paragraph test",
             "contents": [{
                 "id": "article",
                 "contentType": "paragraphs",

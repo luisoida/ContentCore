@@ -8,6 +8,9 @@ var mainSection = document.createElement('main');
 var createElement = function (data) {
     console.debug(`Loading item [${data.id}]...`)
     let element = document.createElement(data.id);
+    
+    var help = "";
+    help.replace('%{CC_VERSION}');
 
     if (data.hasOwnProperty('contentType')) {
         switch (data.contentType) {
@@ -38,12 +41,15 @@ var createElement = function (data) {
         });
     }
 
+    console.debug(`Modifying content for [${element.innerHTML}]...`);
+    element.innerHTML = element.innerHTML.replace('%{CC_VERSION}', CC_VERSION);
+    element.innerHTML = element.innerHTML.replace('%{CC_BRANDED_VERSION}', CC_BRANDED_VERSION);
     return element;
 };
 
 class CCContent extends HTMLElement {
     static get observedAttributes() {
-        return ['current', 'ready'];
+        return ['current', 'update'];
     }
 
     constructor() {
@@ -62,27 +68,30 @@ class CCContent extends HTMLElement {
     attributeChangedCallback(attrName, oldValue, newValue) {
         console.log(`Attribute shifted: ${attrName} from ${oldValue} to ${newValue}`);
         switch (attrName) {
-            case 'ready':
-                new Promise(function (resolve, reject) {
-                    // clear children
-                    while (mainSection.firstChild) {
-                        mainSection.removeChild(mainSection.firstChild);
-                    }
-
-                    if (!mainSection.firstChild) {
-                        resolve();
-                    }
-                }).then(
-                    resolve => {
-                        if (this.hasAttribute('ready') && currentPageLoaded) {
-                            console.log('Preparing to add content...');
-                            Object.entries(currentPage.contents).forEach(([key, value]) => {
-                                console.debug(`Loading item ${key} [${value.id}]...`)
-                                mainSection.appendChild(createElement(value));
-                            });
+            case 'update':
+                if (this.hasAttribute('update')) {
+                    new Promise(function (resolve, reject) {
+                        // clear children
+                        while (mainSection.firstChild) {
+                            mainSection.removeChild(mainSection.firstChild);
                         }
-                    }
-                );
+    
+                        if (!mainSection.firstChild) {
+                            resolve();
+                        }
+                    }).then(
+                        resolve => {
+                            if (this.hasAttribute('update') && currentPageLoaded) {
+                                console.log('Preparing to add content...');
+                                Object.entries(currentPage.contents).forEach(([key, value]) => {
+                                    console.debug(`Loading item ${key} [${value.id}]...`)
+                                    mainSection.appendChild(createElement(value));
+                                });
+                            }
+                            this.removeAttribute('update');
+                        }
+                    );
+                }
                 break;
         }
     }

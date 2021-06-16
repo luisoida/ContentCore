@@ -12,7 +12,7 @@ var ccSiteNavList;
  */
 class CCSiteNav extends HTMLElement {
     static get observedAttributes() {
-        return ['current', 'ready'];
+        return ['current', 'ready', 'update'];
     }
 
     constructor() {
@@ -40,6 +40,7 @@ class CCSiteNav extends HTMLElement {
 
     attributeChangedCallback(attrName, oldValue, newValue) {
         let linkInsertion = window.location.href.split('?')[0];
+
         console.info(`Attribute shifted: ${attrName} from ${oldValue} to ${newValue}`);
         switch (attrName) {
             case 'ready':
@@ -56,9 +57,15 @@ class CCSiteNav extends HTMLElement {
                                     linkItem.setAttribute('href', value.target);
                                     break;
                                 default:
-                                    linkItem.setAttribute('href', `${linkInsertion}?page=${value.target}`);
+                                    console.debug(`Setting onclick to [loadPage("${value.target}")]...`)
+                                    linkItem.setAttribute('onclick', `loadPage("${value.target}")`);
+                                    linkItem.setAttribute('href', 'javascript:void(0);');
                                     if (value.target === pageId || value.target === "home" && pageId === "") {
-                                        linkItem.setAttribute('class', 'cc-nav-link-current');
+                                        linkItem.classList.add('class', 'cc-nav-link-current');
+                                    } else {
+                                        if (linkItem.classList.contains('cc-nav-link-current')) {
+                                            linkItem.classList.remove('cc-nav-list-current');
+                                        }
                                     }
                                     break;
                             }
@@ -69,16 +76,14 @@ class CCSiteNav extends HTMLElement {
                                     break;
                             }
 
-                            if (this.hasAttribute('current')) {
-                                linkItem.setAttribute('class', 'current');
-                            }
-
                             navItem.appendChild(linkItem);
                             // TODO: Set attribute 'href' depending on the link
                             ccSiteNavList.appendChild(navItem);
                         });
                     }
                 }
+                break;
+            case 'update':
                 break;
         }
     }
