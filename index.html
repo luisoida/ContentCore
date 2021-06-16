@@ -5,8 +5,32 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+    <script src="scripts/cc.js"></script>
+    <script src="scripts/cc_content.js"></script>
+    <script src="scripts/cc_nav.js"></script>
+    <link href="styles/stylesheet.css" rel="stylesheet">
+</head>
 
-<body></body>
+<body>
+    <div id="pagewrapper">
+        <header>
+            <cc-site-nav id="cc-site-nav"></cc-site-nav>
+        </header>
+        <cc-content id="cc-site-content"></cc-content>
+        <footer>
+            <cc-footer></cc-footer>
+        </footer>
+    </div>
+    <script>
+        window.onload = function () {
+            new Promise(function (resolve, reject) {
+                loadsite(resolve)
+            }).then(function (result) {
+                return (loadpages());
+            });
+        }
+    </script>
+</body>
 
 </html>

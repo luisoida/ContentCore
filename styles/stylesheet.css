@@ -1,0 +1,49 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: auto;
+    max-width: 980px;
+}
+
+:root {
+    --cc-nav-background: #000000;
+    --cc-nav-border-radius: 1.25em;
+    --cc-nav-foreground: #ffffff;
+}
+
+/* cc-site-nav style */
+cc-site-nav {
+    background: var(--cc-nav-background);
+    border-radius: var(--cc-nav-border-radius);
+    color: var(--cc-nav-foreground);
+    display: block;
+    font-size: 1em;
+    margin: 2vh 0;
+}
+
+cc-site-nav>nav>ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+cc-site-nav>nav>ul>li,
+cc-site-nav>nav>ul>li>a:link {
+    display: block;
+    width: 100%;
+}
+
+cc-site-nav>nav>ul>li>a:link {
+    border-radius: var(--cc-nav-border-radius);
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.75em 0.5em;
+}
+
+cc-site-nav>nav>ul>li>a:visited {
+    color: inherit;
+}
+
+cc-site-nav>nav>ul>li>a:link.current {}
