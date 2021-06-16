@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/luisoida/ContentCore/main/data/cc_pages.json",
+    "title": "ContentCore Pages",
+    "description": "A file containing pages used in ContentCore.",
+    "type": "object",
+    "properties": {
+        "nav_bar": {
+            "type": "array",
+            "description": "An array of items utilized in the navigation bar.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "target_location": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "required": ["cc_pages"]
+}

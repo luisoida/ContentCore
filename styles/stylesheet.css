@@ -1,49 +1,223 @@
-body {
-    font-family: Helvetica, Arial, sans-serif;
-    margin: auto;
-    max-width: 980px;
+/* web fonts for apple-like design */
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Regular.eot?raw=true');
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Regular.eot?raw=true#iefix') format('embedded-opentype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Regular.woff?raw=true') format('woff'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Regular.ttf?raw=true') format('truetype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Regular.svg?raw=true') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-It.eot?raw=true');
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-It.eot?raw=true#iefix') format('embedded-opentype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-It.woff?raw=true') format('woff'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-It.ttf?raw=true') format('truetype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-It.svg?raw=true') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Myriad Pro';
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Bold.eot?raw=true');
+    src: url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Bold.eot?raw=true#iefix') format('embedded-opentype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Bold.woff?raw=true') format('woff'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Bold.ttf?raw=true') format('truetype'),
+        url('https://github.com/fontfen/myriad-pro/blob/master/MyriadPro-Bold.svg?raw=true') format('svg');
+    font-weight: bold;
+    font-style: normal;
 }
 
 :root {
-    --cc-nav-background: #000000;
-    --cc-nav-border-radius: 1.25em;
+    --cc-body-background-bottom: #ffffff;
+    --cc-body-background-top: #e7e7e7;
+    --cc-footer-border: #ddd;
+    --cc-nav-background: linear-gradient(to bottom, #898989, #6e6e6e 50%, #5e5f5e 50%, #787878);
     --cc-nav-foreground: #ffffff;
+    --cc-nav-item-border-left: rgba(0, 0, 0, 0);
+    --cc-nav-item-border-right: rgba(0, 0, 0, 0.2);
+    --cc-nav-item-link-border-left: rgba(255, 255, 255, 0.175);
+    --cc-nav-item-link-border-right: rgba(200, 200, 200, 0.125);
+    --cc-nav-item-link-hover-background: linear-gradient(to bottom, #4b4b4b, #323232 50%, #2a2a2a 50%, #404240);
+    --cc-nav-item-link-hover-shadow: #5f5f5f;
+    --cc-nav-item-current-background: #3e3e3e;
+    --cc-nav-item-current-shadow: #101010;
+    --cc-section-border: var(--cc-nav-item-border-right);
+    --cc-shadow-color: #aaaaaa;
 }
 
-/* cc-site-nav style */
-cc-site-nav {
-    background: var(--cc-nav-background);
-    border-radius: var(--cc-nav-border-radius);
-    color: var(--cc-nav-foreground);
-    display: block;
-    font-size: 1em;
-    margin: 2vh 0;
+body {
+    background: linear-gradient(to bottom, var(--cc-body-background-bottom, var(--cc-body-background-top)));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+    font-size: 12px;
+    margin: auto;
 }
 
+/* desktop designs */
+@media only screen and (min-width: 768px) {
+    :root {
+        --cc-section-border-radius: 6pt;
+    }
+
+    body {
+        width: 97.5vw;
+        max-width: 1000px;
+    }
+
+    cc-site-nav>nav {
+        border-radius: var(--cc-section-border-radius);
+        border: solid 1px var(--cc-section-border);
+        margin: 1.5em auto 1.25em;
+    }
+
+    cc-site-nav>nav>ul>li:first-child>a {
+        border-top-left-radius: var(--cc-section-border-radius);
+        border-bottom-left-radius: var(--cc-section-border-radius);
+    }
+
+    cc-site-nav>nav>ul>li:last-child>a {
+        border-top-right-radius: var(--cc-section-border-radius);
+        border-bottom-right-radius: var(--cc-section-border-radius);
+    }
+}
+
+/* styled elements */
+
+cc-site-nav>nav,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Myriad Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-block-end: 0;
+}
+
+h2+p,
+h3+p,
+h4+p,
+h5+p,
+h6+p {
+    margin-top: 2px;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.67em;
+}
+
+p {
+    line-height: 1.5;
+}
+
+/* custom class styles */
+a.cc-inherit-style:link,
+cc-site-nav>nav>ul>li>a:link,
+ul.cc-inherit-style-children>li>a:link,
+ol.cc-inherit-style-children>li>a:link,
+a.cc-inherit-style:visited,
+cc-site-nav>nav>ul>li>a:visited,
+ul.cc-inherit-style-children>li>a:visited,
+ol.cc-inherit-style-children>li>a:visited {
+    background-color: inherit;
+    color: inherit;
+    font-style: inherit;
+    text-decoration: inherit;
+}
+
+cc-footer>footer {
+    border-radius: var(--cc-section-border-radius);
+    border: solid 1px var(--cc-footer-border);
+}
+
+ul.cc-list-no-bullets,
+ol.cc-list-no-bullets,
 cc-site-nav>nav>ul {
-    display: flex;
-    justify-content: space-between;
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-cc-site-nav>nav>ul>li,
+ul.cc-list-horizontal>li,
+ol.cc-list-horizontal>li {
+    display: inline-block;
+}
+
+h1.center,
+h2.center,
+h3.center,
+h4.center,
+h5.center,
+h6.center,
+p.center {
+    text-align: center;
+}
+
+div.cc-items-horizontal,
+section.cc-items-horizontal,
+section.cc-sub-nav,
+cc-site-nav>nav>ul {
+    display: flex;
+    flex-direction: row;
+}
+
+section.cc-sub-nav {
+    align-items: first-end;
+    justify-content: space-between;
+}
+
+/* site navigation bar */
+cc-site-nav>nav {
+    background: var(--cc-nav-background);
+    box-shadow: 0 1pt 4pt var(--cc-shadow-color);
+    color: var(--cc-nav-foreground);
+    font-size: 14px;
+}
+
+cc-site-nav>nav>ul>li {
+    display: block;
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: center;
+}
+
+cc-site-nav>nav>ul>li:not(:last-child) {
+    border-right: solid 1px var(--cc-nav-item-border-right);
+}
+
 cc-site-nav>nav>ul>li>a:link {
     display: block;
-    width: 100%;
+    padding: 6pt 0 8pt 0;
 }
 
-cc-site-nav>nav>ul>li>a:link {
-    border-radius: var(--cc-nav-border-radius);
-    color: inherit;
-    text-align: center;
-    text-decoration: none;
-    padding: 0.75em 0.5em;
+cc-site-nav>nav>ul>li:not(:first-child):not(:last-child):not(.cc-nav-link-current)>a:link {
+    border-left: solid 1px var(--cc-nav-item-link-border-left);
+    border-right: solid 1px var(--cc-nav-item-link-border-right);
 }
 
-cc-site-nav>nav>ul>li>a:visited {
-    color: inherit;
+cc-site-nav>nav>ul>li>a.cc-nav-link-current:link {
+    background-color: var(--cc-nav-item-current-background);
+    box-shadow: inset 0 1pt 12pt var(--cc-nav-item-current-shadow);
 }
 
-cc-site-nav>nav>ul>li>a:link.current {}
+cc-site-nav>nav>ul>li>a:not(.cc-nav-link-current):hover {
+    background: var(--cc-nav-item-link-hover-background);
+    box-shadow: inset 0 1pt 4pt var(--cc-nav-item-link-hover-shadow);
+}

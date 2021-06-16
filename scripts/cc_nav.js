@@ -1,3 +1,7 @@
+/*
+ * cc.js - contentcore navigation core
+ * copyright (c) 2021 luis oida
+ */
 
 ccNavLoaded = true;
 var ccSiteNav;
@@ -41,8 +45,8 @@ class CCSiteNav extends HTMLElement {
             case 'ready':
                 if (newValue) {
                     if (pageDataLoaded) {
-                        console.debug(pageData.cc_pages.nav_bar);
-                        Object.entries(pageData.cc_pages.nav_bar).forEach(([key, value]) => {
+                        console.debug(pageData.nav_bar);
+                        Object.entries(pageData.nav_bar).forEach(([key, value]) => {
                             let navItem = document.createElement('li');
                             let linkItem = document.createElement('a');
                             linkItem.textContent = value.title;
@@ -53,6 +57,9 @@ class CCSiteNav extends HTMLElement {
                                     break;
                                 default:
                                     linkItem.setAttribute('href', `${linkInsertion}?page=${value.target}`);
+                                    if (value.target === pageId || value.target === "home" && pageId === "") {
+                                        linkItem.setAttribute('class', 'cc-nav-link-current');
+                                    }
                                     break;
                             }
                             

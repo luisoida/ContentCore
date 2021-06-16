@@ -1,57 +1,76 @@
 {
-    "cc_pages": {
-        "nav_bar": [{
-            "target_location": "internal",
-            "target_target": "",
-            "target": "home",
-            "title": "Home"
-        }, {
-            "target_location": "external",
-            "target_target": "new_window",
-            "target": "https://github.com/luisoida/ContentCore",
-            "title": "GitHub"
-        }],
-        "pages": [{
-            "id": "home",
-            "data": {
-                "contents": [{
-                    "id": "section",
-                    "contentType": "elements",
-                    "content": [{
-                        "id": "h1",
-                        "attributes": [],
+    "nav_bar": [{
+        "target_location": "internal",
+        "target_target": "",
+        "target": "home",
+        "title": "Home"
+    }, {
+        "target_location": "internal",
+        "target_target": "",
+        "target": "error_404",
+        "title": "Error pages"
+    }, {
+        "target_location": "internal",
+        "target_target": "",
+        "target": "paragraph_test",
+        "title": "Paragraphs"
+    }, {
+        "target_location": "external",
+        "target_target": "new_window",
+        "target": "https://github.com/luisoida/ContentCore",
+        "title": "GitHub"
+    }],
+    "pages": [{
+        "id": "home",
+        "data": {
+            "contents": [{
+                "id": "section",
+                "contentType": "elements",
+                "content": [{
+                    "id": "h2",
+                    "attributes": [],
+                    "contentType": "text",
+                    "content": "Welcome."
+                }, {
+                    "id": "p",
+                    "attributes": [{
+                        "attribute": "style",
+                        "value": "p { font-weight:bold; }"
+                    }],
+                    "contentType": "text",
+                    "content": "Welcome to your ContentCore web page."
+                }]
+            }]
+        }
+    }, {
+        "id": "error_404",
+        "data": {
+            "contents": [{
+                "id": "section",
+                "contentType": "elements",
+                "content": [{
+                        "id": "h2",
                         "contentType": "text",
-                        "content": "Welcome."
-                    }, {
+                        "content": "Oops. This page doesn't appear to exist."
+                    },
+                    {
                         "id": "p",
-                        "attributes": [{
-                            "attribute": "style",
-                            "value": "p { font-weight:bold; }"
-                        }],
                         "contentType": "text",
-                        "content": "Welcome to your ContentCore web page."
-                    }]
-                }]
-            }
-        }, {
-            "id": "error_404",
-            "data": {
-                "contents": [{
-                    "id": "section",
-                    "contentType": "elements",
-                    "content": [{
-                            "id": "h2",
-                            "contentType": "text",
-                            "content": "Oops. This page doesn't appear to exist."
-                        },
-                        {
-                            "id": "p",
-                            "contentType": "text",
-                            "content": "This is exactly what I was afraid of, but that's fine."
-                        }
-                    ]
-                }]
-            }
-        }]
-    }
+                        "content": "This is exactly what I was afraid of, but that's fine."
+                    }
+                ]
+            }]
+        }
+    }, {
+        "id": "paragraph_test",
+        "data": {
+            "contents": [{
+                "id": "article",
+                "contentType": "paragraphs",
+                "content": [
+                    "Hello!"
+                ]
+            }]
+        }
+    }]
 }

@@ -1,3 +1,7 @@
+/*
+ * cc.js - contentcore content builder code
+ * copyright (c) 2021 luis oida
+ */
 
 var mainSection = document.createElement('main');
 
@@ -14,6 +18,13 @@ var createElement = function (data) {
                 Object.entries(data.content).forEach(([key, value]) => {
                     element.appendChild(createElement(value));
                 });
+                break;
+            case 'paragraphs':
+                Object.entries(data.content).forEach(([id, object]) => {
+                    let paragraph = document.createElement('p');
+                    paragraph.textContent = object;
+                    element.appendChild(paragraph);
+                })
                 break;
         }
     }

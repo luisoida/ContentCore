@@ -1,3 +1,7 @@
+/*
+ * cc.js - contentcore foundation code
+ * copyright (c) 2021 luis oida
+ */
 
 const CC_VERSION = '0.0';
 var siteDataLoaded = false;
@@ -129,7 +133,7 @@ var loadsite = function(callback) {
 var loadPage = function(page) {
     console.log(`Loading data for page [${page}]...`);
     var data;
-    Object.entries(pageData.cc_pages.pages).forEach(([key, value]) => {
+    Object.entries(pageData.pages).forEach(([key, value]) => {
         console.debug(`Skimming ${key}...`);
         if (value.id == page) {
             data = value;
