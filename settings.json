@@ -1,5 +1,8 @@
 {
     "title": "ContentCore Preview",
     "url": "https://127.0.0.1",
-    "pages": "pages.json"
+    "pages": "pages.json",
+    "stylesheets": [
+        "styles/applesque.css"
+    ]
 }

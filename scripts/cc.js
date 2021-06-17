@@ -21,6 +21,11 @@ const searchParams = new URLSearchParams(window.location.search);
 var pageId = searchParams.get('page');
 
 /**
+ * The document head element.
+ */
+let docHead = document.head;
+
+/**
  * Read JSON file from a server.
  * @param {The URL of the JSON file.} url 
  * @param {A function called after the file is received.} callback 
@@ -66,6 +71,18 @@ var loadpages = function(callback) {
                     pageDataLoaded = true;
                     pageData = data;
                     console.log('Page data stored.');
+
+                    // check if stylesheets property exists
+                    if (siteData.hasOwnProperty('stylesheets')) {
+                        // for each stylesheet, add a sheet element
+                        Object.entries(siteData.stylesheets).forEach(([key, value]) => {
+                            let sheet = document.createElement('link');
+                            sheet.setAttribute('href', value);
+                            sheet.setAttribute('rel', 'stylesheet');
+
+                            docHead.appendChild(sheet);
+                        });
+                    }
 
                     // update current page
                     if (pageId == null) {

@@ -8,9 +8,6 @@ var mainSection = document.createElement('main');
 var createElement = function (data) {
     console.debug(`Loading item [${data.id}]...`)
     let element = document.createElement(data.id);
-    
-    var help = "";
-    help.replace('%{CC_VERSION}');
 
     if (data.hasOwnProperty('contentType')) {
         switch (data.contentType) {

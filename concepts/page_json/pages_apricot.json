@@ -1,0 +1,43 @@
+{
+    "_comment": "Pages file for version Apricot, concept version",
+    "navigation": [{
+        "location": "internal",
+        "open_in": "same",
+        "target": "home",
+        "title": "Home"
+    }, {
+        "location": "internal",
+        "open_in": "same",
+        "target": "error_404",
+        "title": "Error (404)"
+    }, {
+        "location": "internal",
+        "open_in": "same",
+        "target": "paragraph_test",
+        "title": "Test page 2"
+    }, {
+        "location": "external",
+        "open_in": "window",
+        "target": "https://www.github.com/luisoida/ContentCore",
+        "title": "GitHub"
+    }],
+    "pages": [{
+        "id": "home",
+        "title": "ContentCore &quot;Apricot&quot;",
+        "heading": {
+            "title": true,
+            "navigation": true,
+            "navigation_links": []
+        },
+        "content": {
+            "content_type": "article",
+            "contents": [{
+                "style": "heading_2",
+                "text": "Welcome to your ContentCore web site."
+            }, {
+                "style": "body",
+                "text": "ContentCore is a web site core, written in HTML5, CSS3, and JavaScript, allowing for web sites to be built and hosted on small servers."
+            }]
+        }
+    }]
+}
