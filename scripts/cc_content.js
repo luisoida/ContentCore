@@ -78,9 +78,9 @@ class CCContent extends HTMLElement {
                         }
                     }).then(
                         resolve => {
-                            if (this.hasAttribute('update') && currentPageLoaded) {
+                            if (this.hasAttribute('update') && session.activePage.loaded) {
                                 console.log('Preparing to add content...');
-                                Object.entries(currentPage.contents).forEach(([key, value]) => {
+                                Object.entries(session.activePage.data.contents).forEach(([key, value]) => {
                                     console.debug(`Loading item ${key} [${value.id}]...`)
                                     mainSection.appendChild(createElement(value));
                                 });

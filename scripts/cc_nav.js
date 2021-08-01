@@ -29,7 +29,7 @@ class CCSiteNav extends HTMLElement {
 
         this.appendChild(ccSiteNav);
 
-        if (pageDataLoaded) {
+        if (session.pageData.loaded) {
             console.log('Page data received.');
         }
     }
@@ -45,9 +45,9 @@ class CCSiteNav extends HTMLElement {
         switch (attrName) {
             case 'ready':
                 if (newValue) {
-                    if (pageDataLoaded) {
-                        console.debug(pageData.nav_bar);
-                        Object.entries(pageData.nav_bar).forEach(([key, value]) => {
+                    if (session.pageData.loaded) {
+                        console.debug(session.pageData.data.nav_bar);
+                        Object.entries(session.pageData.data.nav_bar).forEach(([key, value]) => {
                             let navItem = document.createElement('li');
                             let linkItem = document.createElement('a');
                             linkItem.textContent = value.title;
